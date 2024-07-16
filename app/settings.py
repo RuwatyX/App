@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles', # статические файлы, специальное приложение, которое обслуживает и ищет статические файлы 
 
     'main',
+    'goods',
 ]
 
 MIDDLEWARE = [
