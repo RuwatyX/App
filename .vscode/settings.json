@@ -44,7 +44,7 @@
 
 
     "[django-html]": {
-        "editor.defaultFormatter": "batisteo.vscode-django",
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
         "breadcrumbs.showClasses": true,
         "editor.quickSuggestions": {
             "other": true,
