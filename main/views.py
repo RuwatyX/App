@@ -4,12 +4,10 @@ from goods.models import Categories
 
 
 def index(request): # представления или контроллеры
-    categories = Categories.objects.all()
 
     context = {
         'title': 'Home - Главная',
         'content': 'Магазин мебели HOME',
-        'categories': categories
         }
     return render(request, 'main/index.html', context) # так как в templates будет искать автоматически. поэтому main/index.html, весь context передается через render в html
 

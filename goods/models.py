@@ -19,7 +19,7 @@ class Categories(models.Model):
 class Products(models.Model): 
     # Наследование от базового класса позволяет производить CRUD операции
     # Взаимодейстовать с Django
-    name = models.CharField(max_length=25, unique=True, verbose_name='Название')
+    name = models.CharField(max_length=35, unique=True, verbose_name='Название')
     slug = models.SlugField(unique=True, blank=True, null=True, verbose_name='URL')
     descripton = models.TextField(blank=True, null=True, verbose_name='Описание')
     image = models.ImageField(upload_to='goods.images', blank=True, null=True, verbose_name='Изображение')
@@ -35,3 +35,10 @@ class Products(models.Model):
 
     def __str__(self) -> str:
         return self.name
+    
+    def display_id(self):
+        return f"{self.id:05}"
+    
+    def sell_price(self):
+        return round(self.price * (1 - (self.discount / 100)), 2) \
+        if self.discount else self.price 
