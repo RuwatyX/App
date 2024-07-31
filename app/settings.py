@@ -17,8 +17,10 @@ from django.conf.global_settings import MEDIA_ROOT, MEDIA_URL
 # from django.conf.global_settings import STATICFILES_DIRS
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent # путь к текущему файлу - текущий файл - parent (каталог в которой находится этот файл)
-# D:\programs\launchers\PythonProjectsVSC\Django1\app 
+BASE_DIR = Path(__file__).resolve().parent.parent # путь к текущему файлу - app/settings.py (каталог в которой находится этот файл)
+
+
+# /Users/yaroslav/Documents/VSC/App
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 # SECURITY WARNING: keep the secret key used in production secret!
@@ -40,9 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles', # статические файлы, специальное приложение, которое обслуживает и ищет статические файлы 
 
-    'debug_toolbar',
+    'debug_toolbar', # дополнительные приложения
 
-    'main',
+    'main', # созданные разработчиком приложения
     'goods',
 ]
 
