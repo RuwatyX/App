@@ -129,10 +129,11 @@ USE_TZ = True
 STATIC_URL = 'static/' # все статические файлы будут доступны по URL, начинающемуся со 'static'
 
 STATICFILES_DIRS = [
-    BASE_DIR / 'static'
+    BASE_DIR / 'static' # то есть к дополнительному поиску в приложениях будет поиск по путям, данных в списке
 ]
 
 MEDIA_URL = 'media/' # также по аналогии со STATIC_URL 
+
 
 MEDIA_ROOT = BASE_DIR / 'media'
 # константа, в которой говорится где Django будет искать изображения 

@@ -15,7 +15,12 @@
     </button>
 
     <form
-      action="{% url "catalog:index" slug_url %}"
+    action="
+    {% if request.GET.q %}{% url "catalog:search" %}
+    {% else %}{% url "catalog:index" slug_url %}
+    {% endif %}
+    "
+    
       method="get"
       class="dropdown-menu bg-dark"
       data-bs-theme="dark"
@@ -29,7 +34,9 @@
           value="on"
           {% if request.GET.on_sale == 'on' %}checked{% endif %}
         />
-        {% comment %} <input type="hidden" name="q" value="request.GET.q" /> {% endcomment %}
+          {% if request.GET.q %}
+           <input type="hidden" name="q" value="{{request.GET.q}} " />
+        {% endif %}
         <label class="form-check-label" for="flexCheckDefault">
           Товары по акции
         </label>
@@ -140,11 +147,11 @@
         {% else  %}
         #
          {% endif %}">Назад</a>
-      </li>
+      </li> 
       {% for page in goods.paginator.page_range %} <!--итерация по всем страницам-->
       {% if page >= goods.number|add:-2 and page <= goods.number|add:2 %}
       <li class="page-item {% if goods.number == page %}active{% endif %}"> <!--отображение текущей страницы-->
-        <a class="page-link" 
+        <a class="page-link"
         href="?{% change_params page=page %}">{{page}}</a>
       </li> <!-- goods - текущая страница --> <!--page число в диапазоне от 1 до кол-ва всех страниц-->
       {% endif %}
@@ -158,7 +165,9 @@
     </div>
   </ul>
 </nav>
-{% endblock content %} {% block footer %}
+{% endblock content %} 
+
+{% block footer %}
 <footer class="py-4 bg-dark">
   <div class="container">
     <p class="m-0 text-center text-white">
