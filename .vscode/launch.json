@@ -2,7 +2,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Pythnon: Django",
+            "name": "Python: Django",
             "type": "debugpy",
             "request": "launch",
             "program": "/Users/yaroslav/Documents/VSC/App/manage.py",

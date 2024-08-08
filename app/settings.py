@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles', # статические файлы, специальное приложение, которое обслуживает и ищет статические файлы 
-
+    'django.contrib.postgres',
     'debug_toolbar', # дополнительные приложения
 
     'main', # созданные разработчиком приложения
@@ -86,8 +86,13 @@ WSGI_APPLICATION = 'app.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # какую использовать бд
-        'NAME': BASE_DIR / 'db.sqlite3', # говорит, где искать базу данных
+        'ENGINE': 'django.db.backends.postgresql', # какую использовать бд
+        'NAME': 'home', # говорит, где искать базу данных
+        'USER': 'home',
+        'PASSWORD': 'home',
+        'HOST': 'localhost',
+        'PORT': '5432'
+    
     }
 }
 
