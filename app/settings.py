@@ -46,6 +46,7 @@ INSTALLED_APPS = [
 
     'main', # созданные разработчиком приложения
     'goods',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -65,7 +66,7 @@ ROOT_URLCONF = 'app.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates', # говорит о том, какой шаблонизатор подключен
-        'DIRS': [],
+        'DIRS': [BASE_DIR / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

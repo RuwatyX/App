@@ -31,11 +31,12 @@
         "django-html": "html"
     },
     "files.associations": {
-        "**/*.html": "html",
+        "**/*.html": "django-html",
         "**/templates/*/*.html": "django-html",
         "**/templates/*/*/*.html": "django-html",
-        "**/templates/*": "django-txt",
-        "**/requirements{/**,*}.{txt,in}": "pip-requirements"
+        "**/templates/*": "django-html ",
+        "**/requirements{/**,*}.{txt,in}": "pip-requirements",
+        "**/templates/*.html": "django-html"
     },
     "django.snippets.exclude": [
         "cms",
