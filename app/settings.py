@@ -12,15 +12,16 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 
-from django.conf.global_settings import MEDIA_ROOT, MEDIA_URL
+from django.conf.global_settings import AUTH_USER_MODEL, MEDIA_ROOT, MEDIA_URL
 
 # from django.conf.global_settings import STATICFILES_DIRS
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent # путь к текущему файлу - app/settings.py (каталог в которой находится этот файл)
-
-
+BASE_DIR = Path(__file__).resolve().parent.parent 
+# полный путь к текущему файлу минус app/settings.py (каталог в которой находится этот файл)
 # /Users/yaroslav/Documents/VSC/App
+
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 # SECURITY WARNING: keep the secret key used in production secret!
@@ -53,15 +54,15 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware', # этот middleware нужен для POST запросов
+    'django.contrib.auth.middleware.AuthenticationMiddleware', # для аутентификации
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     "debug_toolbar.middleware.DebugToolbarMiddleware",
 
 ]
 
-ROOT_URLCONF = 'app.urls'
+ROOT_URLCONF = 'app.urls' # корневой urlconf
 
 TEMPLATES = [
     {
@@ -155,3 +156,5 @@ INTERNAL_IPS = [
     "127.0.0.1",
     # ...
 ]
+
+AUTH_USER_MODEL = 'users.User'

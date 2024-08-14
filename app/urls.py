@@ -29,7 +29,7 @@ urlpatterns = [
 ]
 # urls.py -> main/urls.py -> main/views.py -> main/index.html -> responce reverse order
 
-if settings.DEBUG:
-        urlpatterns += [path('__debug__/', include('debug_toolbar.urls'))]
-        urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+if settings.DEBUG: # если находится в стадии разработки
+        urlpatterns += [path('__debug__/', include('debug_toolbar.urls'))] # toolbar добавляется
+        urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # для загрузки изображений из проекта
  
