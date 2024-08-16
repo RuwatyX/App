@@ -157,4 +157,5 @@ INTERNAL_IPS = [
     # ...
 ]
 
-AUTH_USER_MODEL = 'users.User'
+AUTH_USER_MODEL = 'users.User' 
+# переменная, которая говорит какую модель использовать для авторизации по умолчанию

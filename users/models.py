@@ -5,11 +5,11 @@ from django.contrib.auth.models import AbstractUser
 
 
 
-class User(AbstractUser):
+class User(AbstractUser): # Наследование от автоматически сгенерированного Django класса auth_user
     image = models.ImageField(upload_to="users_images", blank=True, null=True, verbose_name='Аватар')
-
+    # Происходит расширенние функционала родительского класса, путем добавления атрибута
     class Meta:
-        db_table = 'user'
+        db_table = 'user' # from auth_user to user
         verbose_name = 'Пользователя'
         verbose_name_plural = 'Пользователи'
 
