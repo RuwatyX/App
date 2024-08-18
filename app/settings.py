@@ -48,15 +48,16 @@ INSTALLED_APPS = [
     'main', # созданные разработчиком приложения
     'goods',
     'users',
+    'carts', 
 ]
 
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
+    'django.middleware.security.SecurityMiddleware', # Отвечает за безопасность
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware', # этот middleware нужен для POST запросов
+    'django.middleware.csrf.CsrfViewMiddleware', # этот middleware нужен для защищенных POST запросов
     'django.contrib.auth.middleware.AuthenticationMiddleware', # для аутентификации
-    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware', # Для сообщение пользователю
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     "debug_toolbar.middleware.DebugToolbarMiddleware",
 
@@ -136,7 +137,9 @@ USE_TZ = True
 STATIC_URL = 'static/' # все статические файлы будут доступны по URL, начинающемуся со 'static'
 
 STATICFILES_DIRS = [
-    BASE_DIR / 'static' # то есть к дополнительному поиску в приложениях будет поиск по путям, данных в списке
+    BASE_DIR / 'static' 
+    # к дополнительному поиску в приложениях статических файлов (templates/appname)
+    # будет осуществляться поиск по путям, данных в списке
 ]
 
 MEDIA_URL = 'media/' # также по аналогии со STATIC_URL 

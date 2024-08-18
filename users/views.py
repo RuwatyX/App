@@ -68,7 +68,8 @@ def profile(request):
         'form': form
     }
     
-    return render(request, 'users/profile.html', context)
+    return render(request, 'users/profile.html', context) 
+    # templates не нужен, автоматически уже включен
 
 
 @login_required
@@ -76,3 +77,8 @@ def logout(request):
     auth.logout(request)
     messages.success(request, f"{request.user. username} Вы вышли из аккаунта!")
     return redirect(reverse('main:index'))
+
+
+
+def users_cart(request): # корзина для пользователя
+    return render(request, 'users/users_cart.html')
