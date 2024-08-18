@@ -1,28 +1,82 @@
-from django.forms import CharField
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from dataclasses import fields
+from re import T
+from typing import Text
+from django.forms import (
+    CharField,
+    EmailField,
+    EmailInput,
+    ImageField,
+    FileInput,
+    TextInput,
+)
+from django.contrib.auth.forms import (
+    AuthenticationForm,
+    UserCreationForm,
+    UserChangeForm,
+)
 
 from users.models import User
 
 
-
 class UserLoginForm(AuthenticationForm):
-    pass
+    class Meta:
+        fields = ["username", "password"]
+
 
 class UserRegistrationForm(UserCreationForm):
+    pass    
+    # class Meta:
+    #     model = User
+    #     fields = [
+    #         "first_name",
+    #         "last_name",
+    #         "username",
+    #         "email",
+    #         "password1",
+    #         "password2",
+    #     ]
+
+    # first_name = CharField()
+    # last_name = CharField()
+    # username = CharField()
+    # email = CharField()
+    # password1 = CharField()
+    # password2 = CharField()
+
+
+class ProfileForm(UserChangeForm):
     class Meta:
         model = User
-        fields = [
-            "first_name", 
-            "last_name", 
-            "username", 
-            "email", 
-            "password1", 
-            "password2"
-        ]
+        fields = ["image", "first_name", "last_name", "username", "email"]
     
-    first_name = CharField()
-    last_name = CharField()
-    username = CharField()
-    email = CharField()
-    password1 = CharField()
-    password2 = CharField()
+    
+    # class Meta:
+    #     model = User
+    #     fields = ["image", "first_name", "last_name", "username", "email"]
+
+    # image = ImageField(
+    #     widget=FileInput(attrs={"class": "form-control mt-3"}), required=False
+    # )
+    # first_name = CharField(
+    #     widget=TextInput(
+    #         attrs={"class": "form-control", "placeholder": "Введите ваше имя"}
+    #     )
+    # )
+    # last_name = CharField(
+    #     widget=TextInput(
+    #         attrs={"class": "form-control", "placeholder": "Введите вашу фамилию"}
+    #     )
+    # )
+    # username = CharField(
+    #     widget=TextInput(
+    #         attrs={
+    #             "class": "form-control",
+    #             "placeholder": "Введите ваше имя пользователя",
+    #         }
+    #     )
+    # )
+    # email = EmailField(
+    #     widget=EmailInput(
+    #         attrs={"class": "form-control", "placeholder": "Введите вашу почту"}
+    #     )
+    # )

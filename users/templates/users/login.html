@@ -10,6 +10,9 @@
                 <h2 class="text-center mb-4">Авторизация</h2>
                 <form action="{% url "user:login" %}" method="post">
                     {% csrf_token %}
+                    {% if request.GET.next %}
+                    <input type="hidden" name='next' value={{request.GET.next}}>
+                    {% endif %} <!--закидываем еще один значение в POST словарь-->
 
                     
                     <div class="mb-3"> <!--Для каждого поля, свой класс div с оступом-->

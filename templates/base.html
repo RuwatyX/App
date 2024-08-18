@@ -47,7 +47,7 @@
                         <li class="nav-item">
                             <a class="nav-link  text-white" href="carts/cart.html">Корзина</a>
                         </li>
-                        {% if not request.user.is_authenticated %}
+                        {% if user.is_anonymous %}
                         <li class="nav-item">
                             <a class="nav-link  text-white" href="{% url "user:login" %}">Войти</a>
                         </li>
