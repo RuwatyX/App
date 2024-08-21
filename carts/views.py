@@ -1,13 +1,30 @@
-from django.shortcuts import render
-
+from math import prod
+from statistics import quantiles
+from django.shortcuts import redirect, render
+from carts.models import Cart
+from goods.models import Products
 
 
 # Create your views here.
-def cart_add(request, product_id):
-    ...
+def cart_add(request, product_slug):
+    product = Products.objects.get(slug=product_slug)
+    if request.user.is_authenticated:
+        carts = Cart.objects.filter(user=request.user, product=product)
+        if carts.exists():
+            cart = carts.first()
+            if cart:
+                cart.quantity += 1
+                cart.save()
 
-def cart_change(request, product_id):
-    ...
+        else:
+            Cart.objects.create(user=request.user, product=product, quantity=1)
+    
+    return redirect(request.META["HTTP_REFERER"]) # с какого адреса пришел туда обратно и направляем
 
-def cart_remove(request, product_id):
-    ...
+
+
+def cart_change(request, product_slug):
+    return
+
+def cart_remove(request, product_slug):
+    return

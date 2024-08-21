@@ -1,5 +1,4 @@
 
-from re import T
 from django.utils.http import urlencode
 from django import template
 from goods.models import Categories
