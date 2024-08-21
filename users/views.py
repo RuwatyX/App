@@ -16,7 +16,8 @@ def login(request):
             if user: # если найден в базе данных такой пользователь
                 auth.login(request, user)
                 messages.success(request, f"{username} Вы успешно авторизовались!")
-                if request.POST.get('next', None):
+                redirect_page = request.POST.get('next', None) # при user/profile, если не залогинен
+                if redirect_page and redirect_page != reverse('user:logout'):
                     return redirect(request.POST.get('next'))
                 return redirect(reverse('main:index')) # перенаправление пользователя после регистрации на главную страницу
     else: # Срабатывает только тогда, когда пользователь переходит на */user/login, то есть срабатывает GET-запрос
