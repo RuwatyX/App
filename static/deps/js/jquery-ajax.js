@@ -6,7 +6,7 @@ $(document).ready(function () {
   // Ловим собыитие клика по кнопке добавить в корзину
   $(document).on("click", ".add-to-cart", function (e) { // ловим событие клика, по контейнеру (тегу ссылки <a>), который содержит в себе класс add-to-cart (в catalog.html)
       // Блокируем его базовое действие | событие попадает в параметр e
-      e.preventDefault(); // блокирует поведение этого тега, никуда запросы базовая реализация не будет
+      e.preventDefault(); // блокирует поведение этого тега, никуда запросы базовая реализация не будет направлять
 
       // Берем элемент счетчика в значке корзины и берем оттуда значение
       var goodsInCartCount = $("#goods-in-cart-count"); // берем значение. Находим такой id в span в cart_button.html
@@ -21,11 +21,11 @@ $(document).ready(function () {
       // делаем post запрос через ajax не перезагружая страницу
       $.ajax({
           type: "POST",
-          url: add_to_cart_url,
+          url: add_to_cart_url, // Взяли из шаблона
           data: {
-              product_id: product_id,
+              product_id: product_id, // Взяли из шаблона
               csrfmiddlewaretoken: $("[name=csrfmiddlewaretoken]").val(), // чтобы это мог делать конкретный пользователь
-          },
+          }, // --------Responce попадает сюда------------
           success: function (data) { // data это jsonresponce от django при выполнении взаимодействия с cart (возможно cart_add)
               // Сообщение
               successMessage.html(data.message); // message передаем также в контексте

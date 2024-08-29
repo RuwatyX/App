@@ -1,4 +1,4 @@
-from webbrowser import get
+
 from django.shortcuts import redirect, render
 from django.template.loader import render_to_string
 from carts.models import Cart
@@ -12,20 +12,34 @@ from django.http import JsonResponse
 def cart_add(request):
     product_id = request.POST.get(
         "product_id"
-    )  # jquery направляет POST запрос с данным ключем
+)  # jquery направляет POST запрос с данным ключем
     product = Products.objects.get(id=product_id)
     if request.user.is_authenticated:
-        carts = Cart.objects.filter(user=request.user, product=product)
-        if carts.exists():
+        carts = Cart.objects.filter(user=request.user, product=product) # находим одну корзину
+        if carts.exists(): # Если уже такая корзина существует просто увеличиваем кол-во
             cart = carts.first()
             if cart:
                 cart.quantity += 1
                 cart.save()
 
-        else:
+        else: # Создаем новую строку в таблице Cart
             Cart.objects.create(user=request.user, product=product, quantity=1)
 
-    user_cart = get_user_carts(request)
+
+
+    else:
+        carts = Cart.objects.filter(session_key=request.session.session_key, product=product)
+        if carts.exists():
+            cart = carts.first()
+            if cart:
+                cart.quantity += 1
+                cart.save()
+        else:
+            Cart.objects.create(session_key=request.session.session_key, product=product,quantity=1)
+
+
+    user_cart = get_user_carts(request) # Возвращаются все корзины авторизованного или не пользователя
+    # Здесь не создается сессионный ключ, потому что он уже создан в разметке cart_button.html
 
     cart_items_html = render_to_string(
         "carts/includes/included_cart.html", {"carts": user_cart}, request=request
