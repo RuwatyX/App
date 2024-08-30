@@ -23,18 +23,17 @@ class UserLoginForm(AuthenticationForm):
         fields = ["username", "password"]
 
 
-class UserRegistrationForm(UserCreationForm):
-    pass    
-    # class Meta:
-    #     model = User
-    #     fields = [
-    #         "first_name",
-    #         "last_name",
-    #         "username",
-    #         "email",
-    #         "password1",
-    #         "password2",
-    #     ]
+class UserRegistrationForm(UserCreationForm):   
+    class Meta:
+        model = User
+        fields = [
+            "first_name",
+            "last_name",
+            "username",
+            "email",
+            "password1",
+            "password2",
+        ]
 
     # first_name = CharField()
     # last_name = CharField()
