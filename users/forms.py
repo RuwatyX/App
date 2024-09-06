@@ -1,6 +1,4 @@
 from dataclasses import fields
-from re import T
-from typing import Text
 from django.forms import (
     CharField,
     EmailField,
@@ -18,7 +16,7 @@ from django.contrib.auth.forms import (
 from users.models import User
 
 
-class UserLoginForm(AuthenticationForm):
+class UserLoginForm(AuthenticationForm): # используется модель из AUTH_USER_MODEL (users.User)
     class Meta:
         fields = ["username", "password"]
 

@@ -13,8 +13,8 @@ class CartTabAdmin(admin.TabularInline): # Нужен для того, чтоб�
 
 @admin.register(Cart)
 class CartAdmin(admin.ModelAdmin):
-    list_display = ["user_display", "product_display", "quantity", "created_timestamp"]
-    list_filter = ["created_timestamp", "user", "product__name"]
+    list_display = ["user_display", "product_display", "quantity", "created_timestamp"] # поля в админ панели
+    list_filter = ["created_timestamp", "user", "product__name"] # по каким полям фильтровать
 
 
     def user_display(self, obj):

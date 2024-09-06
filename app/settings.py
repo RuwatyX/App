@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     'main', # созданные разработчиком приложения
     'goods',
     'users',
-    'carts', 
+    'carts',
+    'orders' 
 ]
 
 MIDDLEWARE = [
